@@ -1,0 +1,118 @@
+# =========================
+# Keybinding Semantic Model
+# =========================
+#
+# Modifiers:
+#   Super (Win)  = primary action / operate
+#   Shift        = rearrange / move the object
+#   Alt          = relocate / send the object elsewhere (never focus)
+#   Ctrl         = relative / cyclical / traversal modifier
+#
+# Targets:
+#   Arrow keys   = spatial direction (tiles / adjacent workspaces)
+#   Numbers      = absolute workspace index
+#   PageUp/Down  = monitor traversal
+#   Mouse scroll = relative traversal (same semantics as arrows)
+#
+# Invariants:
+#   - Super alone changes focus or state
+#   - Shift always acts on the object (move/rearrange), never focus
+#   - Alt never focuses; it only sends/relocates
+#   - Ctrl never selects a target; it only makes the action relative
+#
+# Composition rules:
+#   Super + Arrow              -> focus spatially
+#   Super + Shift + Arrow      -> move window spatially
+#   Super + Alt + Arrow        -> send window to adjacent workspace
+#   Super + Ctrl + Arrow       -> cycle workspace focus
+#
+#   Super + Number             -> focus workspace
+#   Super + Alt + Number       -> send window to workspace
+#
+#   Super + PageUp/Down        -> (unused by design)
+#   Super + Ctrl + PageUp/Down -> cycle monitor focus
+#   Super + Shift + PageUp/Down-> move window to monitor
+#
+# Guiding principle:
+#   Modifiers refine intent; keys choose the axis.
+# =========================
+
+.shell powershell
+
+# Reload whkd configuration
+# win + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
+lwin + o                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
+lwin + shift + o         : komorebic reload-configuration
+
+lwin + oem_2                 : komorebic toggle-shortcuts
+
+# App shortcuts - these require shell to be pwsh / powershell
+# The apps will be focused if open, or launched if not open
+# lwin + f                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
+# lwin + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
+
+#/# bind = Super, ←/↑/→/↓,, # Focus in direction
+lwin + left : komorebic focus left
+lwin + right : komorebic focus right
+lwin + down : komorebic focus down
+lwin + up : komorebic focus up
+
+#/# bind = Super+Shift, ←/↑/→/↓,, # Move in direction
+lwin + shift + left : komorebic move left
+lwin + shift + right : komorebic move right
+lwin + shift + down : komorebic move down
+lwin + shift + up : komorebic move up
+
+lwin + shift + next : komorebic cycle-move-to-monitor next
+lwin + shift + prior : komorebic cycle-move-to-monitor previous
+
+lwin + shift + ctrl + right : komorebic cycle-move-to-workspace next
+lwin + shift + ctrl + left : komorebic cycle-move-to-workspace previous 
+
+lwin + shift + ctrl + next : komorebic cycle-move-workspace-to-monitor next
+lwin + shift + ctrl + prior : komorebic cycle-move-workspace-to-monitor previous
+
+lwin + q : komorebic close
+
+# Positioning mode
+lwin + d : komorebic toggle-monocle
+lwin + f: komorebic toggle-float
+lwin + p : komorebic promote
+lwin + oem_6 : komorebic cycle-layout next 
+lwin + oem_4 : komorebic cycle-layout previous
+
+#/# bind = Super+Alt, Hash,, # Send to workspace # (1, 2, 3,...)
+# We use raw keycodes because some keyboard layouts register number keys as different chars. The codes can be verified with `wev`
+lwin + alt + 1 : komorebic send-to-workspace 0
+lwin + alt + 2 : komorebic send-to-workspace 1
+lwin + alt + 3 : komorebic send-to-workspace 2
+lwin + alt + 4 : komorebic send-to-workspace 3
+lwin + alt + 5 : komorebic send-to-workspace 4
+lwin + alt + 6 : komorebic send-to-workspace 5
+
+#/# bind = Super+Shift, Page_↑/↓,, # Send to workspace left/right
+lwin + alt + right : komorebic cycle-send-to-workspace next
+lwin + alt + left : komorebic cycle-send-to-workspace previous
+
+lwin + alt + next : komorebic cycle-send-to-monitor next
+lwin + alt + prior : komorebic cycle-send-to-monitor previous
+
+##! Workspace
+# Switching
+#/# bind = Super, Hash,, # Focus workspace # (1, 2, 3,...)
+# We use raw keycodes because some keyboard layouts register number keys as different chars. The codes can be verified with `wev`
+
+lwin + 1 : komorebic focus-workspace 0
+lwin + 2 : komorebic focus-workspace 1
+lwin + 3 : komorebic focus-workspace 2
+lwin + 4 : komorebic focus-workspace 3
+lwin + 5 : komorebic focus-workspace 4
+lwin + 6 : komorebic focus-workspace 5
+
+#/# bind = Ctrl+Super, ←/→,, # Focus left/right
+lwin + ctrl + left : komorebic cycle-workspace previous
+lwin + ctrl + right : komorebic cycle-workspace next
+
+#/# bind = Super, Page_↑/↓,, # Focus left/right
+lwin + next : komorebic cycle-monitor next
+lwin + prior : komorebic cycle-monitor previous
