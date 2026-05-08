@@ -1,0 +1,19 @@
+{{- if ne .chezmoi.os "windows" }}
+# Windows specific
+*.ps1
+.config/rewasd
+.config/whkdrc
+.config/yasb
+{{- end }}
+
+{{ if ne .chezmoi.os "linux" }}
+{{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL-specific code
+{{   end }}
+{{   if ne .chezmoi.osRelease.id "arch" }}
+# Arch-specific code
+.config/hypr
+.config/fish
+{{ end }}
+{{ end }}
+
