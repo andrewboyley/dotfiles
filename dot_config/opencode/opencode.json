@@ -6,6 +6,10 @@
       "command": [
         "ccc", "mcp"
       ]
+    },
+    "deepwiki": {
+	"type": "remote",
+      "url": "https://mcp.deepwiki.com/mcp"
     }
   ,
     },
