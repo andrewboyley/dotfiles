@@ -1,7 +1,6 @@
 {{- if ne .chezmoi.os "windows" }}
 # Ignored on non-Windows
 *.ps1
-.zshrc
 .profile
 .config/rewasd
 .config/whkdrc

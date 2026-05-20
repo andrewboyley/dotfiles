@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@cedrugs/opencode-omniauth": "^1.4.0",
     "@opencode-ai/plugin": "1.4.3"
   }
 }
