@@ -1,0 +1,44 @@
+[core]
+{{- if eq .chezmoi.os "windows" }}
+	editor = \"C:\\Users\\AndrewB\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+	autocrlf = true
+	longpaths = true
+	precomposeunicode = false
+{{- else }}
+	editor = vim
+{{- end }}
+
+[safe]
+{{- if eq .chezmoi.os "windows" }}
+	directory = %(prefix)///FS2.ho.fosltd.co.za/RCSCommon/
+{{- end }}
+	directory = *
+
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+
+[init]
+	defaultBranch = main
+
+{{- if eq .chezmoi.os "windows" }}
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = false
+	keepBackup = false
+
+[diff "gitExcel"]
+	command = "C:/Users/AndrewB/.local/gitexcel/gitExcel.cmd"
+
+[diff "excel"]
+	command = "C:/Users/AndrewB/scoop/apps/ExcelCompare/current/ExcelCompare-0.7.0/bin/exceldiff.cmd"
+{{- end }}

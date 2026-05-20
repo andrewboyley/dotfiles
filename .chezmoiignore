@@ -1,19 +1,22 @@
 {{- if ne .chezmoi.os "windows" }}
-# Windows specific
+# Ignored on non-Windows
 *.ps1
+.zshrc
+.profile
 .config/rewasd
 .config/whkdrc
 .config/yasb
+.config/komorebi
+.config/git
 {{- end }}
 
-{{ if ne .chezmoi.os "linux" }}
-{{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-# WSL-specific code
-{{   end }}
-{{   if ne .chezmoi.osRelease.id "arch" }}
-# Arch-specific code
+{{- if ne .chezmoi.osRelease.id "arch" }}
+# Ignored on non-Arch Linux (e.g. Ubuntu, Windows)
 .config/hypr
 .config/fish
-{{ end }}
-{{ end }}
+{{- end }}
+
+{{- if not (and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft")) }}
+# WSL-specific code — ignored on pure Linux, Windows, and macOS
+{{- end }}
 
