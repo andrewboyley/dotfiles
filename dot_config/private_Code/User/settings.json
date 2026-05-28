@@ -1,0 +1,139 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDelete": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "remote.SSH.useExecServer": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "window.titleBarStyle": "custom",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "editor.cursorBlinking": "expand",
+  "oneDarkPro.vivid": true,
+  "workbench.colorTheme": "GitHub Dark Default",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.detectIndentation": true,
+  "workbench.statusBar.visible": true,
+  "editor.tabSize": 2,
+  "editor.suggestSelection": "first",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "remote.SSH.path": "/usr/bin/ssh",
+  "remote.extensionKind": {
+    "continue.continue": [
+      "workspace"
+    ]
+  },
+  "git.ignoreLegacyWarning": true,
+  "window.restoreWindows": "none",
+  "files.autoSave": "off",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.tabSize": 4,
+    "editor.formatOnType": true
+  },
+  "better-comments.multilineComments": true,
+  "editor.minimap.renderCharacters": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+  },
+  "explorer.compactFolders": false,
+  "css.validate": false,
+  "git.ignoreMissingGitWarning": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "jupyter.askForKernelRestart": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "jupyter.debugJustMyCode": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+  "update.showReleaseNotes": false,
+  "redhat.telemetry.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "settingsSync.ignoredSettings": [
+    "-python.condaPath"
+  ],
+  "workbench.editor.empty.hint": "hidden",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "explorer.confirmPasteNative": false,
+  "interactiveWindow.executeWithShiftEnter": true,
+  "prettier.useTabs": true,
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.ignore": [
+    "9"
+  ],
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingImports": "none",
+    "reportUndefinedVariable": "none",
+    "reportMissingModuleSource": "none"
+  },
+  "ruff.nativeServer": "auto",
+  "ruff.lint.enable": true,
+"terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.inheritEnv": false,
+  "yaml.schemas": {
+    "file:///c%3A/Users/andyb/.vscode/extensions/continue.continue-1.2.11-win32-x64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "file:///home/andrew/.vscode/extensions/continue.continue-1.2.14-linux-x64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  }
+,
+  "material-code.primaryColor": "#95102C",
+  "chat.mcp.gallery.enabled": true,
+  "idf.hasWalkthroughBeenShown": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "docker.extension.dockerEngineAvailabilityPrompt": false,
+  "@azure.argTenant": "",
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://*.docker.com": true
+  }
+}

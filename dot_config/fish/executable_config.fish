@@ -27,19 +27,22 @@ if status is-interactive
     if test "$TERM" != "linux"
         alias ls 'eza --icons'
     end
-    
+    if test "$TERM" = "xterm-kitty"
+        alias ssh 'kitten ssh'
+    end
 end
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-set -gx MAMBA_EXE "/home/andrew/miniforge3/bin/mamba"
-set -gx MAMBA_ROOT_PREFIX "zsh"
-$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/andrew/miniforge3/bin/conda
+    eval /home/andrew/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/andrew/miniforge3/etc/fish/conf.d/conda.fish"
+        . "/home/andrew/miniforge3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/andrew/miniforge3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
 
 source ~/.config/fish/auto-Hypr.fish
-
-# Added by codebase-memory-mcp install
-export PATH="/home/andrew/.local/bin:$PATH"
-
-export npm_config_prefix="$HOME/.local"

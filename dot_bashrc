@@ -1,0 +1,46 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/andrew/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/andrew/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/andrew/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/andrew/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/home/andrew/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/home/andrew/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/andrew/.local/bin:$PATH"

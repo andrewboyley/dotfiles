@@ -1,42 +1,73 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "mcp": {
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
     "cocoindex-code": {
       "type": "local",
-      "command": [
-        "ccc", "mcp"
-      ]
+      "command": ["ccc", "mcp"]
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
     },
     "deepwiki": {
-	"type": "remote",
+      "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp"
-    }
-  ,
     },
-    "provider": {
-	        "ollama": {
+  },
+  "provider": {
+    "ollama": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama",
       "options": {
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-	"smollm2:1.7b": {"name": "smollm2", "stream": false},
-	"phi4-mini:latest": {"name": "phi4-mini", "stream": false},
- 
+        "smollm2:1.7b": { "name": "smollm2", "stream": false },
+        "phi4-mini:latest": { "name": "phi4-mini", "stream": false }
+      }
+    },
+    "omniroute": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OmniRoute",
+      "options": {
+        "baseURL": "https://omniroute.jetson/v1"
       },
+      "models": {
+        "auto/chat": {},
+        "minimal":{},
+	"all-chat-models-combo": {}
+      }
     },
-        "omniroute": {
-            "npm": "@ai-sdk/openai-compatible",
-            "name": "OmniRoute",
-            "options": {
-                "baseURL": "http://192.168.3.154:20128/v1",
-                "apiMode": "chat",
-            }
-        }
-    },
+
+    "cliproxyapi": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "CLI Proxy API",
+      "options": {
+        "baseURL": "https://cliproxyapi.jetson/v1",
+        "apiKey": "sk-MV86R8JeUnTf2bySr"
+      },
+	"models": {
+		"grok-4.3": {},
+		"grok-3-mini-fast":{},
+		"gemini-2.5-flash-lite":{},
+		"gemini-2.5-flash":{},
+		"gemini-3.1-pro-preview": {},
+		"gemini-3-pro-preview": {},
+		"gemini-3-flash-preview":{},
+		"gemini-3.1-flash-lite-preview": {},
+		"gpt-5.5":{},
+		"gpt-5.3-codex":{},
+		"gpt-5.4":{},
+		"codex-auto-review":{},
+		"gpt-5.2": {},
+		"gpt-5.4-mini":{}
+      }
+}
+  },
   "formatter": true,
-"lsp": {
+  "plugin": [
+  ],
+  "lsp": {
     "ruff": {
       "command": ["ruff", "server"],
       "extensions": [".py"]
@@ -44,9 +75,6 @@
     "ty": {
       "command": ["ty", "server"],
       "extensions": [".py"]
-    },
-    "pyright": {
-      "disabled": true
     }
   }
 }

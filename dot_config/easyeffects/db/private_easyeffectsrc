@@ -1,0 +1,34 @@
+[Audio]
+copyFilterInputBuffers=true
+
+[NativePluginWindow]
+showNativePluginUi=true
+
+[Presets]
+lastLoadedOutputPreset=JBL Tune 520BT
+
+[Spectrum]
+spectrumShape=lines
+
+[StreamInputs]
+inputDevice=bluez_input.E4:61:F4:16:E4:B7
+
+[StreamOutputs]
+mostUsedPresets=Bang&Olufsen Beta,JBL Tune 520BT
+outputDevice=bluez_output.E4_61_F4_16_E4_B7.1
+plugins=equalizer#0,exciter#0,autogain#0,limiter#0
+usedPresets=Bang&Olufsen Beta:32,JBL Tune 520BT:14
+visiblePage=pluginsPage
+visiblePlugin=equalizer#0
+
+[Style]
+forceBreezeTheme=false
+
+[Window]
+autostartOnLogin=true
+height=1019
+visiblePipeWirePage=modulesPage
+visiblePresetSheetPage=autoloadingPage
+width=946
+xdgGlobalShortcuts=true
+xdgGlobalShortcutsBound=true

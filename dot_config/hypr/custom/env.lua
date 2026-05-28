@@ -1,0 +1,1 @@
+hl.env("EDITOR", "vim")

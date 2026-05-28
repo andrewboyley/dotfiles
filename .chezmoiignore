@@ -9,7 +9,7 @@
 .config/git
 {{- end }}
 
-{{- if ne .chezmoi.osRelease.id "arch" }}
+{{- if and (ne .chezmoi.osRelease.id "arch") (ne .chezmoi.osRelease.id "cachyos") (ne .chezmoi.osRelease.id "endeavouros") (ne .chezmoi.osRelease.id "manjaro") }}
 # Ignored on non-Arch Linux (e.g. Ubuntu, Windows)
 .config/hypr
 .config/fish
