@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ~/.bashrc — managed by chezmoi
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -23,10 +23,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -40,16 +36,8 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
 	color_prompt=
@@ -68,46 +56,31 @@ case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
-    ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
+# Add an "alert" alias for long running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+# Alias definitions — may want to put additions into ~/.bash_aliases instead
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable programmable completion features
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -116,17 +89,34 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# ============================================================================
+# TOOL PATHS (shell-guarded — fail silently if tool not installed)
+# ============================================================================
+
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+if [ -d "$HOME/.bun" ]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+fi
 
+# nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Added by codebase-memory-mcp install
-export PATH="/home/andrew/.local/bin:$PATH"
+# codebase-memory-mcp
+[ -d "/home/andrew/.local/bin" ] && export PATH="/home/andrew/.local/bin:$PATH"
 
+# npm global binaries
+[ -d "$HOME/.npm-global/bin" ] && export PATH="$HOME/.npm-global/bin:$PATH"
+
+# rust/cargo binaries
+[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+
+# ============================================================================
+# CONDA / MAMBA (managed by conda/mamba init, miniforge3)
+# ============================================================================
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -143,7 +133,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
 export MAMBA_EXE='/home/andrew/miniforge3/bin/mamba';
@@ -157,14 +146,41 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
+# ============================================================================
+# EDITOR
+# ============================================================================
+
 export EDITOR=nvim
 
-source '/home/andrew/.bash_completions/ccc.sh'
+# ============================================================================
+# OS-SPECIFIC CONFIG
+# ============================================================================
 
+{{ if eq .chezmoi.os "linux" -}}
+# CCC shell completions (linux tool)
+[ -f "$HOME/.bash_completions/ccc.sh" ] && source "$HOME/.bash_completions/ccc.sh"
+
+# opencode CLI
+[ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
+
+# workmux
+type workmux >/dev/null 2>&1 && alias wm='workmux'
+{{ end -}}
+
+{{ if eq .chezmoi.os "windows" -}}
+# Windows-specific tool paths go here
+{{ end -}}
+
+# ============================================================================
+# MACHINE-SPECIFIC CONFIG (chezmoi-gated by hostname)
+# ============================================================================
+
+{{ if eq .chezmoi.hostname "LT109819DF0405" -}}
+# Work PC — WSL on Ubuntu 24.04
+
+# Node.js CA certificates for corporate proxy
+export NODE_EXTRA_CA_CERTS="{{ .work_cert_path }}"
+
+# Access Obsidian via Windows host
 alias obsidian='pwsh.exe /c obsidian'
-
-export NODE_EXTRA_CA_CERTS=/mnt/c/Users/AndrewB/Documents/certificates/jetson.crt
-
-# opencode
-export PATH=/home/andrew/.opencode/bin:$PATH
-alias wm='workmux'
+{{ end -}}
