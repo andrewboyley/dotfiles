@@ -1,77 +1,77 @@
 {
   "version": 3,
   "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-05-05T20:22:06.305Z",
+      "updatedAt": "2026-05-05T20:22:06.305Z"
+    },
+    "defuddle": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/defuddle/SKILL.md",
+      "skillFolderHash": "db0b775af7e7d603f59fa2b67bdef615baf1a48f",
+      "installedAt": "2026-05-13T09:20:27.566Z",
+      "updatedAt": "2026-05-13T09:20:27.566Z"
+    },
+    "json-canvas": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/json-canvas/SKILL.md",
+      "skillFolderHash": "9df7971db7ffebf96f2a207840b9f4765aa11b04",
+      "installedAt": "2026-05-13T09:20:27.567Z",
+      "updatedAt": "2026-05-13T09:20:27.567Z"
+    },
+    "obsidian-bases": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-bases/SKILL.md",
+      "skillFolderHash": "4bef60bb848bfb02b4172b552626d5741b0d4057",
+      "installedAt": "2026-05-13T09:20:27.568Z",
+      "updatedAt": "2026-05-13T09:20:27.568Z"
+    },
+    "obsidian-cli": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-cli/SKILL.md",
+      "skillFolderHash": "96254a554e480359de7b685571876f2e7f9ba57d",
+      "installedAt": "2026-05-13T09:20:27.568Z",
+      "updatedAt": "2026-05-13T09:20:27.568Z"
+    },
+    "obsidian-markdown": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-markdown/SKILL.md",
+      "skillFolderHash": "5caf5d9e7de204f3904216857545f2aa36bcfcac",
+      "installedAt": "2026-05-13T09:20:27.569Z",
+      "updatedAt": "2026-05-13T09:20:27.569Z"
+    },
     "ccc": {
       "source": "cocoindex-io/cocoindex-code",
       "sourceType": "github",
       "sourceUrl": "https://github.com/cocoindex-io/cocoindex-code.git",
       "skillPath": "skills/ccc/SKILL.md",
       "skillFolderHash": "637307beb0e55de9c11148f04a842916619dbb40",
-      "installedAt": "2026-05-06T21:15:03.747Z",
-      "updatedAt": "2026-05-12T11:20:43.577Z"
+      "installedAt": "2026-05-13T09:21:28.854Z",
+      "updatedAt": "2026-05-13T09:21:28.854Z"
     },
-    "find-skills": {
-      "source": "vercel-labs/skills",
+    "agents-md": {
+      "source": "dimitrigilbert/ai-skills",
       "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/skills.git",
-      "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "d31e234f0c90694a670222cdd1dafa853e051d7066beda389f1097c22dadd461",
-      "installedAt": "2026-05-06T21:15:14.523Z",
-      "updatedAt": "2026-05-06T21:15:14.523Z"
-    },
-    "microsoft-foundry": {
-      "source": "microsoft/azure-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/microsoft/azure-skills.git",
-      "skillPath": ".github/plugins/azure-skills/skills/microsoft-foundry/SKILL.md",
-      "skillFolderHash": "5d2158c657c8c38b458a3b2231b270ea29e95135",
-      "installedAt": "2026-05-08T07:25:00.389Z",
-      "updatedAt": "2026-05-25T13:30:28.941Z"
-    },
-    "defuddle": {
-      "source": "git@github.com:kepano/obsidian-skills.git",
-      "sourceType": "git",
-      "sourceUrl": "git@github.com:kepano/obsidian-skills.git",
-      "skillPath": "skills/defuddle/SKILL.md",
-      "skillFolderHash": "0ed68bc3e818ba0e6b8d192357ea3daaf552a3893f8854e7fd43c06831f91323",
-      "installedAt": "2026-05-13T17:33:33.093Z",
-      "updatedAt": "2026-05-13T17:33:33.093Z"
-    },
-    "json-canvas": {
-      "source": "git@github.com:kepano/obsidian-skills.git",
-      "sourceType": "git",
-      "sourceUrl": "git@github.com:kepano/obsidian-skills.git",
-      "skillPath": "skills/json-canvas/SKILL.md",
-      "skillFolderHash": "56cbac74a93e4fba97f4d44bccfdeaae89e545b223f47df392c7705e01e6c543",
-      "installedAt": "2026-05-13T17:33:33.095Z",
-      "updatedAt": "2026-05-13T17:33:33.095Z"
-    },
-    "obsidian-bases": {
-      "source": "git@github.com:kepano/obsidian-skills.git",
-      "sourceType": "git",
-      "sourceUrl": "git@github.com:kepano/obsidian-skills.git",
-      "skillPath": "skills/obsidian-bases/SKILL.md",
-      "skillFolderHash": "ed0a53502693e56c67575a9958daca9a3a1ac7ba483367f400b4cad9488bfb3c",
-      "installedAt": "2026-05-13T17:33:33.097Z",
-      "updatedAt": "2026-05-13T17:33:33.097Z"
-    },
-    "obsidian-cli": {
-      "source": "git@github.com:kepano/obsidian-skills.git",
-      "sourceType": "git",
-      "sourceUrl": "git@github.com:kepano/obsidian-skills.git",
-      "skillPath": "skills/obsidian-cli/SKILL.md",
-      "skillFolderHash": "f46ae626875f7e47c410c2ee93896c4526024ebe127719e8fb430261b5677edc",
-      "installedAt": "2026-05-13T17:33:33.098Z",
-      "updatedAt": "2026-05-13T17:33:33.098Z"
-    },
-    "obsidian-markdown": {
-      "source": "git@github.com:kepano/obsidian-skills.git",
-      "sourceType": "git",
-      "sourceUrl": "git@github.com:kepano/obsidian-skills.git",
-      "skillPath": "skills/obsidian-markdown/SKILL.md",
-      "skillFolderHash": "cacc9058a35ad3fd4985b4c31121bff8202f1337c39808c1326ded6a19a7915f",
-      "installedAt": "2026-05-13T17:33:33.099Z",
-      "updatedAt": "2026-05-13T17:33:33.099Z"
+      "sourceUrl": "https://github.com/dimitrigilbert/ai-skills.git",
+      "skillPath": "agents-md/SKILL.md",
+      "skillFolderHash": "310faedf6d6e2c9c5f81d6b1191a372fd4caee03",
+      "installedAt": "2026-05-14T15:03:26.004Z",
+      "updatedAt": "2026-05-14T15:03:26.004Z"
     }
   },
   "dismissed": {
