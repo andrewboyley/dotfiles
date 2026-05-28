@@ -17,16 +17,36 @@ source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 # ============================================================================
 
 # >>> conda initialize >>>
-if [ -x '/home/andrew/miniforge3/bin/conda' ]; then
-    __conda_setup="$('/home/andrew/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ -x '{{ .conda_root }}/bin/conda' ]; then
+    __conda_setup="$('{{ .conda_root }}/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/home/andrew/miniforge3/etc/profile.d/conda.sh" ]; then
-            . "/home/andrew/miniforge3/etc/profile.d/conda.sh"
+        if [ -f "{{ .conda_root }}/etc/profile.d/conda.sh" ]; then
+            . "{{ .conda_root }}/etc/profile.d/conda.sh"
         else
-            export PATH="/home/andrew/miniforge3/bin:$PATH"
+            export PATH="{{ .conda_root }}/bin:$PATH"
         fi
+    fi
+    unset __conda_setup
+fi
+
+# >>> mamba initialize >>>
+if [ -x '{{ .conda_root }}/bin/mamba' ]; then
+    export MAMBA_EXE='{{ .conda_root }}/bin/mamba';
+    {{ if eq .chezmoi.osRelease.id "cachyos" -}}
+    export MAMBA_ROOT_PREFIX='{{ .chezmoi.homeDir }}/.local/share/mamba';
+    {{ else -}}
+    export MAMBA_ROOT_PREFIX='{{ .conda_root }}';
+    {{ end -}}
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias mamba="$MAMBA_EXE"
+    fi
+    unset __mamba_setup
+fi
     fi
     unset __conda_setup
 fi

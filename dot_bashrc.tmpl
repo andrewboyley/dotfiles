@@ -106,7 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # codebase-memory-mcp
-[ -d "/home/andrew/.local/bin" ] && export PATH="/home/andrew/.local/bin:$PATH"
+[ -d "{{ .chezmoi.homeDir }}/.local/bin" ] && export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 
 # npm global binaries
 [ -d "$HOME/.npm-global/bin" ] && export PATH="$HOME/.npm-global/bin:$PATH"
@@ -115,35 +115,39 @@ export NVM_DIR="$HOME/.nvm"
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # ============================================================================
-# CONDA / MAMBA (managed by conda/mamba init, miniforge3)
+# CONDA / MAMBA (managed by conda/mamba init)
 # ============================================================================
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/andrew/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/andrew/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/andrew/miniforge3/etc/profile.d/conda.sh"
+if [ -d "{{ .conda_root }}" ]; then
+    __conda_setup="$('{{ .conda_root }}/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/andrew/miniforge3/bin:$PATH"
+        if [ -f "{{ .conda_root }}/etc/profile.d/conda.sh" ]; then
+            . "{{ .conda_root }}/etc/profile.d/conda.sh"
+        else
+            export PATH="{{ .conda_root }}/bin:$PATH"
+        fi
     fi
+    unset __conda_setup
 fi
-unset __conda_setup
 # <<< conda initialize <<<
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/home/andrew/miniforge3/bin/mamba';
-export MAMBA_ROOT_PREFIX='/home/andrew/miniforge3';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+if [ -x '{{ .conda_root }}/bin/mamba' ]; then
+    export MAMBA_EXE='{{ .conda_root }}/bin/mamba';
+    export MAMBA_ROOT_PREFIX='{{ .conda_root }}';
+    __mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__mamba_setup"
+    else
+        alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+    fi
+    unset __mamba_setup
 fi
-unset __mamba_setup
 # <<< mamba initialize <<<
 
 # ============================================================================
