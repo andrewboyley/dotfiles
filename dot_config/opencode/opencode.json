@@ -8,6 +8,16 @@
         "mcp"
       ]
     },
+    "obsidian": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "npx",
+        "-y",
+        "@mauricio.wolff/mcp-obsidian@latest",
+        "~/Documents/Obsidian-PKMS"
+      ]
+    },
     "deepwiki": {
       "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp"
@@ -21,12 +31,8 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-        "smollm2:1.7b": {
-          "name": "smollm2"
-        },
-        "phi4-mini:latest": {
-          "name": "phi4-mini"
-        }
+        "smollm2:1.7b": {"name": "smollm2", "stream": false},
+        "phi4-mini:latest": {"name": "phi4-mini", "stream": false}
       }
     },
     "omniroute": {
@@ -37,137 +43,16 @@
         "apiMode": "chat"
       },
       "models": {
-	"ag":{
-
-		"name":"antigravity",
-		"limit":{
-			"context": 1000000,
-			"output": 65536
-		}
-	},
-	"gemini":{
-
-		"name":"gem",
-		"limit":{
-			"context": 1000000,
-			"output": 65536
-		}
-	},
-	"antigravity/gemini-3.1-pro-low":{
-
-		"name":"gem-pro",
-		"limit":{
-			"context": 1000000,
-			"output": 65536
-		}
-	},
-	"antigravity/gemini-3-flash-agent":{
-
-		"name":"gem-flash",
-		"limit":{
-			"context": 1000000,
-			"output": 65536
-		}
-	},
-	"antigravity/gemini-3.5-flash-low":{
-		
-		"name":"gem-flash-lite",
-		"limit":{
-			"context": 1000000,
-			"output": 65000
-		}
-	},
-        "minimal": {
+        "ag": {
+          "name": "antigravity",
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          }
         },
-	"all-chat-models-combo":{
-		"name":"all",
-		"limit":{
-			"context": 128000,
-			"output": 4096
-		}
-	},
-	"openrouter/free":{},
-	"auto":{
-	"name":"auto",
-	  "limit": {  
-            "context": 128000,
-	    "output":4096          }  
-	},
-	
-	"auto/best-reasoning":{
-	"name": "auto/best-reasoning",
-	  "limit": {  
-            "context": 128000,
-	    "output":4096          }  
-
-	},
-	"auto/best-coding":{
-	"name":"auto/best-coding",
-	  "limit": {  
-            "context": 128000,
-	    "output":4096          }  
-	}
-      }
-    },
-    "cliproxyapi": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "CLI Proxy API",
-      "options": {
-        "baseURL": "https://cliproxyapi.jetson/v1",
-        "apiKey": "sk-MV86R8JeUnTf2bySr"
-      },
-      "models": {
-	"claude-sonnet-4-6":{},
-	"claude-opus-4-6-thinking":{},
-        "grok-4.3": {},
-        "grok-3-mini-fast": {},
-        "gemini-2.5-flash-lite": {},
-        "gemini-2.5-flash": {},
-        "gemini-3.1-pro-preview": {},
-        "gemini-3-pro-preview": {},
-        "gemini-3-flash-preview": {},
-        "gemini-3.1-flash-lite-preview": {},
-        "gpt-5.5": {},
-        "gpt-5.3-codex": {},
-        "gpt-5.4": {},
-        "codex-auto-review": {},
-        "gpt-5.2": {},
-        "gpt-5.4-mini": {}
+        "gemini": {
+          "name": "gem"
+        }
       }
     }
-  },
-  "formatter": true,
-  "lsp": {
-    "ruff": {
-      "command": [
-        "ruff",
-        "server"
-      ],
-      "extensions": [
-        ".py"
-      ]
-    },
-    "ty": {
-      "command": [
-        "ty",
-        "server"
-      ],
-      "extensions": [
-        ".py"
-      ]
-    },
-    "pyright": {
-      "disabled": true
-    }
-  },
-  "disabled_providers": [],
-  "plugin": [
-    "@tarquinen/opencode-dcp@latest",
-    "opencode-pty",
-    "opencode-skills",
-    "opencode-vibeguard",
-    "opencode-background-agents",
-    "@slkiser/opencode-quota",
-    "@mailshieldai/opencode-canvas"
-  ]
-}
+  }

@@ -15,8 +15,13 @@ Managed with [chezmoi](https://chezmoi.io).
 ### Windows
 
 ```powershell
+# Install chezmoi
 scoop install chezmoi
+
+# Clone and apply dotfiles
 chezmoi init --apply andrewboyley
+
+# Fix remote to use SSH
 chezmoi cd
 git remote set-url origin git@github.com:andrewboyley/dotfiles.git
 ```
@@ -24,8 +29,13 @@ git remote set-url origin git@github.com:andrewboyley/dotfiles.git
 ### WSL Ubuntu
 
 ```bash
+# Install chezmoi
 sudo apt update && sudo apt install chezmoi
+
+# Clone and apply dotfiles
 chezmoi init --apply andrewboyley
+
+# Fix remote to use SSH
 chezmoi cd
 git remote set-url origin git@github.com:andrewboyley/dotfiles.git
 ```
@@ -33,20 +43,25 @@ git remote set-url origin git@github.com:andrewboyley/dotfiles.git
 ### Arch Linux
 
 ```bash
+# Install chezmoi
 sudo pacman -S chezmoi
+
+# Clone and apply dotfiles
 chezmoi init --apply andrewboyley
+
+# Fix remote to use SSH
 chezmoi cd
 git remote set-url origin git@github.com:andrewboyley/dotfiles.git
 ```
 
 ## Per-machine config
 
-Create `~/.config/chezmoi/chezmoi.toml` on each machine:
+Machine-specific values (e.g., git user name/email) are set via `~/.config/chezmoi/chezmoi.toml`:
 
 ```toml
 [data]
-    name = "Your Name"          # work vs personal
-    email = "user@domain.com"   # per-machine email
+    name = "Andrew Boyley"      # work: "Andrew Boyley", personal: "AndrewB"
+    email = "andrewb@tfg.co.za" # use your per-machine email
 ```
 
 Run `chezmoi data` to see all available template variables.
@@ -54,12 +69,19 @@ Run `chezmoi data` to see all available template variables.
 ## Daily workflow
 
 ```bash
-chezmoi add ~/.someconfig       # add new file
-chezmoi diff                    # preview changes
-chezmoi apply                   # apply pending changes
-chezmoi git add .               # stage all
-chezmoi git commit -- -m "msg"  # commit
-chezmoi git -- push             # push
+# Add a new file to track
+chezmoi add ~/.someconfig
+
+# Preview what would change
+chezmoi diff
+
+# Apply pending changes
+chezmoi apply
+
+# Commit and push updates
+chezmoi git add .
+chezmoi git commit -- -m "Add someconfig"
+chezmoi git -- push
 ```
 
 ## File naming

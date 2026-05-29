@@ -1,6 +1,20 @@
 {
-  "private": true,
+  "name": "opencode-config",
+  "version": "1.0.0",
+  "description": "OpenCode configuration and scripts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint .",
+    "graphify": "graphify-cli"
+  },
   "dependencies": {
-    "@opencode-ai/plugin": "1.4.3"
+    "typescript": "^5.0.4",
+    "openagent": "^1.3.0",
+    "graphify-cli": "^0.2.1"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "eslint": "^8.38.0"
   }
 }
