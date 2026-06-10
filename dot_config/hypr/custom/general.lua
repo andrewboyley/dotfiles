@@ -2,7 +2,8 @@
 
 hl.gesture({
     fingers = 4,
-    action = "workspace"
+    direction = "down",
+    action = "unset"
 })
 
 hl.gesture({

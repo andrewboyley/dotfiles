@@ -5,7 +5,7 @@
 	longpaths = true
 	precomposeunicode = false
 {{- else }}
-	editor = vim
+	editor = nvim
 {{- end }}
 
 [safe]
@@ -20,6 +20,16 @@
 
 [init]
 	defaultBranch = main
+
+# Using nvim as diff tool
+[difftool]
+    prompt = true
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$REMOTE\" \"$LOCAL\""
 
 {{- if eq .chezmoi.os "windows" }}
 [filter "lfs"]
