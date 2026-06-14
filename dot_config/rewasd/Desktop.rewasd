@@ -160,10 +160,19 @@
     },
     {
       "id": 3,
-      "parentSectorId": 3,
+      "parentSectorId": 2,
       "sectors": [
         6,
-        7
+        7,
+        8
+      ]
+    },
+    {
+      "id": 4,
+      "parentSectorId": 3,
+      "sectors": [
+        9,
+        10
       ]
     }
   ],
@@ -179,12 +188,13 @@
     },
     {
       "parentCircleId": 1,
-      "id": 2
+      "id": 2,
+      "childCircleId": 3
     },
     {
       "parentCircleId": 1,
       "id": 3,
-      "childCircleId": 3,
+      "childCircleId": 4,
       "icon": {
         "type": "standard",
         "resource": "IconSelector_Music"
@@ -200,15 +210,27 @@
     },
     {
       "parentCircleId": 3,
-      "id": 6,
+      "id": 6
+    },
+    {
+      "parentCircleId": 3,
+      "id": 7
+    },
+    {
+      "parentCircleId": 3,
+      "id": 8
+    },
+    {
+      "parentCircleId": 4,
+      "id": 9,
       "icon": {
         "type": "standard",
         "resource": "IconSelector_SkipForward"
       }
     },
     {
-      "parentCircleId": 3,
-      "id": 7,
+      "parentCircleId": 4,
+      "id": 10,
       "icon": {
         "type": "standard",
         "resource": "IconSelector_PlayStop"
@@ -652,30 +674,6 @@
     },
     {
       "id": 42,
-      "set": [
-        {
-          "deviceId": 1,
-          "buttonId": 9,
-          "description": "XB, Nintendo: LeftStick / DS4, Stadia: L3"
-        },
-        {
-          "deviceId": 1,
-          "buttonId": 10,
-          "description": "XB, Nintendo: RightStick / DS4, Stadia: R3"
-        }
-      ]
-    },
-    {
-      "id": 43,
-      "radialMenuSet": [
-        {
-          "circleId": 1,
-          "sectorId": 2
-        }
-      ]
-    },
-    {
-      "id": 44,
       "radialMenuSet": [
         {
           "circleId": 2,
@@ -684,7 +682,7 @@
       ]
     },
     {
-      "id": 45,
+      "id": 43,
       "radialMenuSet": [
         {
           "circleId": 2,
@@ -693,7 +691,7 @@
       ]
     },
     {
-      "id": 46,
+      "id": 44,
       "radialMenuSet": [
         {
           "circleId": 3,
@@ -702,11 +700,38 @@
       ]
     },
     {
-      "id": 47,
+      "id": 45,
       "radialMenuSet": [
         {
           "circleId": 3,
           "sectorId": 7
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "radialMenuSet": [
+        {
+          "circleId": 3,
+          "sectorId": 8
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "radialMenuSet": [
+        {
+          "circleId": 4,
+          "sectorId": 9
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "radialMenuSet": [
+        {
+          "circleId": 4,
+          "sectorId": 10
         }
       ]
     }
@@ -922,23 +947,20 @@
       ]
     },
     {
-      "description": "Open Task manager",
+      "description": "Game Bar",
       "condition": {
         "mask": {
           "id": 7,
           "activator": {
             "type": "single",
-            "mode": "hold_until_release"
+            "mode": "hold_until_release",
+            "params": {
+              "macro": true
+            }
           }
         }
       },
       "macros": [
-        {
-          "keyboard": {
-            "buttonId": 29,
-            "description": "DIK_LCONTROL"
-          }
-        },
         {
           "keyboard": {
             "buttonId": 42,
@@ -947,8 +969,8 @@
         },
         {
           "keyboard": {
-            "buttonId": 1,
-            "description": "DIK_ESCAPE"
+            "buttonId": 41,
+            "description": "DIK_GRAVE"
           }
         }
       ]
@@ -970,14 +992,14 @@
       "macros": [
         {
           "keyboard": {
-            "buttonId": 219,
-            "description": "DIK_LWIN"
+            "buttonId": 42,
+            "description": "DIK_LSHIFT"
           }
         },
         {
           "keyboard": {
-            "buttonId": 32,
-            "description": "DIK_D"
+            "buttonId": 15,
+            "description": "DIK_TAB"
           }
         }
       ]
@@ -1009,190 +1031,24 @@
           "id": 10,
           "activator": {
             "type": "single",
-            "mode": "hold_until_release"
+            "mode": "onetime"
           }
         }
-      },
-      "macros": [
-        {
-          "keyboard": {
-            "buttonId": 28,
-            "description": "DIK_RETURN"
-          }
-        }
-      ]
+      }
     },
     {
-      "description": "Try me :)",
       "condition": {
         "mask": {
           "id": 11,
           "activator": {
             "type": "single",
-            "mode": "onetime",
-            "params": {
-              "expert": true,
-              "delay": 40
-            }
+            "mode": "hold_until_release"
           }
         }
       },
-      "macros": [
-        {
-          "keyboard": {
-            "buttonId": 35,
-            "description": "DIK_H",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 35,
-            "description": "DIK_H",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 18,
-            "description": "DIK_E",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 18,
-            "description": "DIK_E",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 24,
-            "description": "DIK_O",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 24,
-            "description": "DIK_O",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 57,
-            "description": "DIK_SPACE",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 57,
-            "description": "DIK_SPACE",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 17,
-            "description": "DIK_W",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 17,
-            "description": "DIK_W",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 24,
-            "description": "DIK_O",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 24,
-            "description": "DIK_O",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 19,
-            "description": "DIK_R",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 19,
-            "description": "DIK_R",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 38,
-            "description": "DIK_L",
-            "action": "up"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 32,
-            "description": "DIK_D",
-            "action": "down"
-          }
-        },
-        {
-          "keyboard": {
-            "buttonId": 32,
-            "description": "DIK_D",
-            "action": "up"
-          }
-        }
-      ]
+      "jumpToLayer": {
+        "layer": 3
+      }
     },
     {
       "description": "Copy",
@@ -2762,25 +2618,17 @@
       ]
     },
     {
+      "description": "Game Bar",
       "condition": {
         "shiftId": 3,
         "mask": {
           "id": 7,
           "activator": {
             "type": "single",
-            "mode": "hold_until_release"
+            "mode": "onetime"
           }
         }
-      },
-      "macros": [
-        {
-          "gamepad": {
-            "id": 1,
-            "buttonId": 7,
-            "description": "XB: View / XB360: Back / DS4: Share / Nintendo: Minus / DS3: Select / Stadia: Options / NvidiaShield: Back / SNES: Select"
-          }
-        }
-      ]
+      }
     },
     {
       "condition": {
@@ -2839,8 +2687,10 @@
         {
           "gamepad": {
             "id": 1,
-            "buttonId": 10,
-            "description": "XB, Nintendo: RightStick / DS4, Stadia: R3"
+            "buttonId": 50,
+            "description": "RightStickRight",
+            "absolute": true,
+            "value": 32767
           }
         }
       ]
@@ -2856,15 +2706,9 @@
           }
         }
       },
-      "macros": [
-        {
-          "gamepad": {
-            "id": 1,
-            "buttonId": 11,
-            "description": "XB, Nintendo, Flydigi: Home / DS4: PS / Stadia: Stadia / NvidiaShield: Nvidia"
-          }
-        }
-      ]
+      "jumpToLayer": {
+        "layer": 0
+      }
     },
     {
       "condition": {
@@ -4112,6 +3956,19 @@
     },
     {
       "condition": {
+        "shiftId": 3,
+        "hardware": {
+          "deviceId": 1,
+          "buttonId": 11,
+          "description": "XB, Nintendo, Flydigi: Home / DS4: PS / Stadia: Stadia / NvidiaShield: Nvidia"
+        }
+      },
+      "hardware": {
+        "unmap": true
+      }
+    },
+    {
+      "condition": {
         "shiftId": 5,
         "mask": {
           "id": 30,
@@ -4431,58 +4288,9 @@
     },
     {
       "condition": {
-        "mask": {
-          "id": 42,
-          "activator": {
-            "type": "single",
-            "mode": "hold_until_release"
-          }
-        }
-      },
-      "jumpToLayer": {
-        "layer": 3
-      }
-    },
-    {
-      "condition": {
-        "shiftId": 3,
-        "mask": {
-          "id": 42,
-          "activator": {
-            "type": "single",
-            "mode": "hold_until_release"
-          }
-        }
-      },
-      "jumpToLayer": {
-        "layer": 0
-      }
-    },
-    {
-      "condition": {
         "shiftId": 5,
         "mask": {
-          "id": 43,
-          "activator": {
-            "type": "single",
-            "mode": "hold_until_release"
-          }
-        }
-      },
-      "macros": [
-        {
-          "keyboard": {
-            "buttonId": 221,
-            "description": "DIK_APPS"
-          }
-        }
-      ]
-    },
-    {
-      "condition": {
-        "shiftId": 5,
-        "mask": {
-          "id": 44,
+          "id": 42,
           "activator": {
             "type": "single",
             "mode": "hold_until_release"
@@ -4501,7 +4309,7 @@
       "condition": {
         "shiftId": 5,
         "mask": {
-          "id": 45,
+          "id": 43,
           "activator": {
             "type": "single",
             "mode": "hold_until_release"
@@ -4517,10 +4325,100 @@
       ]
     },
     {
+      "description": "Discord",
+      "condition": {
+        "shiftId": 5,
+        "mask": {
+          "id": 44,
+          "activator": {
+            "type": "single",
+            "mode": "hold_until_release",
+            "params": {
+              "macro": true
+            }
+          }
+        }
+      },
+      "macros": [
+        {
+          "keyboard": {
+            "buttonId": 42,
+            "description": "DIK_LSHIFT"
+          }
+        },
+        {
+          "keyboard": {
+            "buttonId": 41,
+            "description": "DIK_GRAVE"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Steam",
+      "condition": {
+        "shiftId": 5,
+        "mask": {
+          "id": 45,
+          "activator": {
+            "type": "single",
+            "mode": "hold_until_release",
+            "params": {
+              "macro": true
+            }
+          }
+        }
+      },
+      "macros": [
+        {
+          "keyboard": {
+            "buttonId": 42,
+            "description": "DIK_LSHIFT"
+          }
+        },
+        {
+          "keyboard": {
+            "buttonId": 15,
+            "description": "DIK_TAB"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Windows game bar",
       "condition": {
         "shiftId": 5,
         "mask": {
           "id": 46,
+          "activator": {
+            "type": "single",
+            "mode": "hold_until_release",
+            "params": {
+              "macro": true
+            }
+          }
+        }
+      },
+      "macros": [
+        {
+          "keyboard": {
+            "buttonId": 219,
+            "description": "DIK_LWIN"
+          }
+        },
+        {
+          "keyboard": {
+            "buttonId": 34,
+            "description": "DIK_G"
+          }
+        }
+      ]
+    },
+    {
+      "condition": {
+        "shiftId": 5,
+        "mask": {
+          "id": 47,
           "activator": {
             "type": "single",
             "mode": "hold_until_release"
@@ -4540,7 +4438,7 @@
       "condition": {
         "shiftId": 5,
         "mask": {
-          "id": 47,
+          "id": 48,
           "activator": {
             "type": "single",
             "mode": "hold_until_release"
