@@ -116,6 +116,14 @@ hl.gesture({
 	end,
 })
 
+hl.window_rule({
+    match = { class = "^Handy$", title = "^Recording$" },
+    no_focus = true,
+    no_blur = true,
+    no_shadow = true,
+    border_size=0
+})
+
 require("dms.colors")
 require("dms.outputs")
 require("dms.layout")
